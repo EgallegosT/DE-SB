@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug CSS - Despedida Eterna</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        .debug-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .status {
+            padding: 10px;
+            border-radius: 4px;
+            margin: 10px 0;
+        }
+        .success { background-color: #d4edda; color: #155724; }
+        .error { background-color: #f8d7da; color: #721c24; }
+        .warning { background-color: #fff3cd; color: #856404; }
+        .test-element {
+            background-color: #007bff;
+            color: white;
+            padding: 20px;
+            margin: 10px 0;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔍 Debug CSS - Despedida Eterna</h1>
+    
+    <div class="debug-section">
+        <h2>1. Verificación de Archivos CSS</h2>
+        <div id="css-status"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>2. Test de Estilos CSS</h2>
+        <div class="test-element" id="style-test">
+            Este elemento debería tener fondo azul y texto blanco si el CSS se carga correctamente
+        </div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>3. Información del Navegador</h2>
+        <div id="browser-info"></div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>4. Enlaces CSS</h2>
+        <div id="css-links"></div>
+    </div>
+
+    <script>
+        // Verificar si los archivos CSS se cargan
+        function checkCSSFiles() {
+            const cssFiles = [
+                'assets/css/style.css',
+                'assets/css/dashboard.css',
+                'assets/css/store.css'
+            ];
+            
+            const statusDiv = document.getElementById('css-status');
+            
+            cssFiles.forEach(file => {
+                const link = document.createElement('link');
+                link.rel = 'stylesheet';
+                link.href = file;
+                
+                link.onload = () => {
+                    const div = document.createElement('div');
+                    div.className = 'status success';
+                    div.textContent = `✅ ${file} - Cargado correctamente`;
+                    statusDiv.appendChild(div);
+                };
+                
+                link.onerror = () => {
+                    const div = document.createElement('div');
+                    div.className = 'status error';
+                    div.textContent = `❌ ${file} - Error al cargar`;
+                    statusDiv.appendChild(div);
+                };
+                
+                document.head.appendChild(link);
+            });
+        }
+        
+        // Información del navegador
+        function showBrowserInfo() {
+            const infoDiv = document.getElementById('browser-info');
+            infoDiv.innerHTML = `
+                <div class="status info">
+                    <strong>User Agent:</strong> ${navigator.userAgent}
+                </div>
+                <div class="status info">
+                    <strong>URL Actual:</strong> ${window.location.href}
+                </div>
+                <div class="status info">
+                    <strong>Protocolo:</strong> ${window.location.protocol}
+                </div>
+                <div class="status info">
+                    <strong>Host:</strong> ${window.location.host}
+                </div>
+            `;
+        }
+        
+        // Mostrar enlaces CSS
+        function showCSSLinks() {
+            const linksDiv = document.getElementById('css-links');
+            const links = document.querySelectorAll('link[rel="stylesheet"]');
+            
+            links.forEach(link => {
+                const div = document.createElement('div');
+                div.className = 'status info';
+                div.textContent = `📄 ${link.href}`;
+                linksDiv.appendChild(div);
+            });
+        }
+        
+        // Ejecutar verificaciones
+        window.onload = function() {
+            checkCSSFiles();
+            showBrowserInfo();
+            showCSSLinks();
+        };
+    </script>
+</body>
+</html> 
