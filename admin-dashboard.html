@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración</title>
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/admin-dashboard.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar();"></div>
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-user-shield"></i>
+                <span>Admin Panel</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar();">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="#usuarios" class="nav-link" data-section="usuarios">
+                        <i class="fas fa-users"></i>
+                        <span>Usuarios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#memoriales" class="nav-link" data-section="memoriales">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Memoriales</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#eventos" class="nav-link" data-section="eventos">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Eventos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#productos" class="nav-link" data-section="productos">
+                        <i class="fas fa-box"></i>
+                        <span>Productos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#log" class="nav-link" data-section="log">
+                        <i class="fas fa-clipboard-list"></i>
+                        <span>Log de actividad</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#configuracion" class="nav-link" data-section="configuracion">
+                        <i class="fas fa-cog"></i>
+                        <span>Configuración</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <div class="sidebar-footer">
+            <button class="btn btn-outline btn-full" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar();">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Usuarios</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-menu">
+                    <div class="user-info">
+                        <img src="assets/images/default-avatar.png" alt="Admin" class="user-avatar" id="userAvatar">
+                        <span class="user-name" id="userName">Admin</span>
+                    </div>
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+        <!-- Dashboard Admin Section -->
+        <section class="dashboard-section active" id="usuariosSection">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-users"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalUsers">0</h3>
+                        <p class="stat-label">Usuarios</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-user-circle"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalMemorials">0</h3>
+                        <p class="stat-label">Memoriales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalEvents">0</h3>
+                        <p class="stat-label">Eventos</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-box"></i></div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalProducts">0</h3>
+                        <p class="stat-label">Productos</p>
+                    </div>
+                </div>
+            </div>
+            <div class="admin-table-container" id="section-content">
+                <!-- Aquí se cargará la tabla de usuarios u otra sección -->
+            </div>
+        </section>
+        <!-- Secciones para Memoriales, Eventos, Productos, Log -->
+        <section class="dashboard-section" id="memorialesSection">
+            <div class="admin-table-container" id="memoriales-content"></div>
+        </section>
+        <section class="dashboard-section" id="eventosSection">
+            <div class="admin-table-container" id="eventos-content"></div>
+        </section>
+        <section class="dashboard-section" id="productosSection">
+            <div class="admin-table-container" id="productos-content"></div>
+        </section>
+        <section class="dashboard-section" id="logSection">
+            <div class="admin-table-container" id="log-content"></div>
+        </section>
+        <section class="dashboard-section" id="configuracionSection">
+            <div class="admin-table-container" id="configuracion-content"></div>
+        </section>
+    </main>
+    <script src="assets/js/admin-dashboard.js"></script>
+</body>
+</html> 

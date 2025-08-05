@@ -1,0 +1,14 @@
+{
+  "name": "despedida-eterna-sb",
+  "version": "1.0.0",
+  "description": "Despedida Eterna - Frontend con Supabase",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx http-server -p 3000",
+    "start": "npx http-server -p 3000"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}

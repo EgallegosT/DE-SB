@@ -1,0 +1,119 @@
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f7fafc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+.confirm-container {
+  max-width: 420px;
+  margin: 48px auto 0 auto;
+  background: #fff;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(45,143,45,0.07);
+  padding: 32px 28px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+h1 {
+  color: #2d8f2d;
+  font-size: 2rem;
+  margin-bottom: 18px;
+}
+
+.guest-info-box {
+  background: #f9fef9;
+  border-radius: 10px;
+  padding: 18px 16px;
+  margin-bottom: 18px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+form#confirmForm {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+form#confirmForm label {
+  font-weight: 500;
+  color: #2d8f2d;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+form#confirmForm input[type="number"],
+form#confirmForm input[type="text"] {
+  padding: 8px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+form#confirmForm input:focus {
+  border-color: #2d8f2d;
+  outline: none;
+}
+
+.btn-group {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.confirm-btn {
+  background: #2d8f2d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.confirm-btn:hover {
+  background: #256d25;
+}
+
+.decline-btn {
+  background: #e74c3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 24px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.decline-btn:hover {
+  background: #c0392b;
+}
+
+.result-msg {
+  margin-top: 18px;
+  font-size: 1.1rem;
+  color: #2d8f2d;
+  text-align: center;
+}
+
+@media (max-width: 600px) {
+  .confirm-container {
+    max-width: 98vw;
+    padding: 18px 6vw;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+} 

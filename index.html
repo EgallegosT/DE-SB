@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Despedida Eterna - Honra la memoria de tus seres queridos</title>
+    <meta name="description" content="Plataforma para crear perfiles memoriales y organizar eventos de despedida. Honra la memoria de tus seres queridos de manera especial.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-menu" id="navbarMenu">
+                    <a href="#inicio" class="nav-link">Inicio</a>
+                    <a href="#servicios" class="nav-link">Servicios</a>
+                    <a href="store.html" class="nav-link">Tienda</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                    <a href="public-memorials.html" class="nav-link">Memoriales</a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="/login.html" class="btn btn-login">Iniciar Sesión</a>
+                    <a href="/register.html" class="btn btn-primary">Registrarse</a>
+                    <!-- Iconos solo para móvil -->
+                    <div class="header-icons-mobile">
+                        <a href="/login.html" title="Iniciar Sesión"><i class="fa-solid fa-user"></i></a>
+                        <a href="/register.html" title="Registrarse"><i class="fa-solid fa-user-plus"></i></a>
+                    </div>
+                </div>
+                
+                <button class="navbar-toggle" id="navbarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="inicio">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">
+                    Honra la memoria de tus seres queridos de manera especial
+                </h1>
+                <p class="hero-description">
+                    Despedida Eterna te permite crear perfiles memoriales únicos, organizar eventos de despedida 
+                    y mantener viva la memoria de quienes más amas.
+                </p>
+                <div class="hero-actions">
+                    <a href="/register.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-plus"></i>
+                        Crear Perfil Memorial
+                    </a>
+                    <a href="#servicios" class="btn btn-outline btn-large">
+                        <i class="fas fa-info-circle"></i>
+                        Conoce Nuestros Servicios
+                    </a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <div class="hero-placeholder">
+                    <i class="fas fa-heart"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Servicios Section -->
+    <section class="services" id="servicios">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <p class="section-description">
+                    Ofrecemos herramientas completas para honrar la memoria de tus seres queridos
+                </p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 class="service-title">Perfiles Memoriales</h3>
+                    <p class="service-description">
+                        Crea perfiles únicos con biografías, galerías de fotos, mensajes de condolencias 
+                        y velas virtuales para honrar la memoria.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Galería de imágenes</li>
+                        <li><i class="fas fa-check"></i> Biografía personalizada</li>
+                        <li><i class="fas fa-check"></i> Mensajes de condolencias</li>
+                        <li><i class="fas fa-check"></i> Velas virtuales</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3 class="service-title">Eventos de Despedida</h3>
+                    <p class="service-description">
+                        Organiza eventos memoriales con gestión de invitados, confirmaciones de asistencia 
+                        y detalles del itinerario.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Gestión de invitados</li>
+                        <li><i class="fas fa-check"></i> Confirmaciones RSVP</li>
+                        <li><i class="fas fa-check"></i> Eventos virtuales</li>
+                        <li><i class="fas fa-check"></i> Notificaciones automáticas</li>
+                    </ul>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="service-title">Tienda Memorial</h3>
+                    <p class="service-description">
+                        Productos especiales como placas con QR, arreglos florales, velas personalizadas 
+                        y más para honrar la memoria.
+                    </p>
+                    <ul class="service-features">
+                        <li><i class="fas fa-check"></i> Placas con QR personalizado</li>
+                        <li><i class="fas fa-check"></i> Arreglos florales</li>
+                        <li><i class="fas fa-check"></i> Velas personalizadas</li>
+                        <li><i class="fas fa-check"></i> Envío a domicilio</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Planes Section -->
+    <section class="plans">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Planes de Suscripción</h2>
+                <p class="section-description">
+                    Mantén viva la memoria de tus seres queridos con nuestros planes flexibles
+                </p>
+            </div>
+            
+            <div class="plans-grid">
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-title">Gratis</h3>
+                        <div class="plan-price">
+                            <span class="price">$0</span>
+                            <span class="period">/ 1 mes</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Perfil memorial completo</li>
+                        <li><i class="fas fa-check"></i> Galería de fotos</li>
+                        <li><i class="fas fa-check"></i> Mensajes de condolencias</li>
+                        <li><i class="fas fa-check"></i> Eventos básicos</li>
+                        <li><i class="fas fa-check"></i> QR personalizado</li>
+                    </ul>
+                    <a href="/register.html" class="btn btn-outline btn-full">Comenzar Gratis</a>
+                </div>
+                
+                <div class="plan-card featured">
+                    <div class="plan-badge">Más Popular</div>
+                    <div class="plan-header">
+                        <h3 class="plan-title">Estándar</h3>
+                        <div class="plan-price">
+                            <span class="price">$999.00</span>
+                            <span class="period">/ 12 meses</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Todo del plan gratuito</li>
+                        <li><i class="fas fa-check"></i> Música de fondo</li>
+                        <li><i class="fas fa-check"></i> Timeline de vida</li>
+                        <li><i class="fas fa-check"></i> Eventos avanzados</li>
+                        <li><i class="fas fa-check"></i> Soporte prioritario</li>
+                    </ul>
+                    <a href="/register.html" class="btn btn-primary btn-full">Elegir Plan</a>
+                </div>
+                
+                <div class="plan-card">
+                    <div class="plan-header">
+                        <h3 class="plan-title">Eterno</h3>
+                        <div class="plan-price">
+                            <span class="price">$4,999.00</span>
+                            <span class="period">/ para siempre</span>
+                        </div>
+                    </div>
+                    <ul class="plan-features">
+                        <li><i class="fas fa-check"></i> Todo del plan estándar</li>
+                        <li><i class="fas fa-check"></i> Sin límite de tiempo</li>
+                        <li><i class="fas fa-check"></i> Personalización completa</li>
+                        <li><i class="fas fa-check"></i> Backup automático</li>
+                        <li><i class="fas fa-check"></i> Soporte 24/7</li>
+                    </ul>
+                    <a href="/register.html" class="btn btn-outline btn-full">Elegir Plan</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Lo que dicen nuestras familias</h2>
+                <p class="section-description">
+                    Historias reales de personas que han encontrado consuelo en nuestros servicios
+                </p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Despedida Eterna me ayudó a crear un hermoso tributo para mi madre. 
+                        La galería de fotos y los mensajes de amigos nos han dado mucho consuelo."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>María González</h4>
+                            <span>Hija</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Organizar el evento de despedida fue muy fácil. Los invitados pudieron 
+                        confirmar su asistencia y todo salió perfecto."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Carlos Rodríguez</h4>
+                            <span>Hijo</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"La placa con QR que compramos es hermosa. Ahora cualquiera puede 
+                        acceder al perfil de mi padre y conocer su historia."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <h4>Ana Martínez</h4>
+                            <span>Hija</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title">Comienza a honrar la memoria de tu ser querido</h2>
+                <p class="cta-description">
+                    Únete a miles de familias que han encontrado consuelo y una manera especial 
+                    de mantener viva la memoria de quienes más aman.
+                </p>
+                <div class="cta-actions">
+                    <a href="/register.html" class="btn btn-primary btn-large">
+                        <i class="fas fa-heart"></i>
+                        Crear Perfil Gratis
+                    </a>
+                    <a href="/contact.html" class="btn btn-outline btn-large">
+                        <i class="fas fa-phone"></i>
+                        Hablar con un Asesor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-brand">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </div>
+                    <p class="footer-description">
+                        Honrando la memoria de tus seres queridos de manera especial y respetuosa.
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Servicios</h4>
+                    <ul class="footer-links">
+                        <li><a href="#servicios">Perfiles Memoriales</a></li>
+                        <li><a href="#servicios">Eventos de Despedida</a></li>
+                        <li><a href="store.html">Tienda Memorial</a></li>
+                        <li><a href="#planes">Planes de Suscripción</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Soporte</h4>
+                    <ul class="footer-links">
+                        <li><a href="/help.html">Centro de Ayuda</a></li>
+                        <li><a href="/contact.html">Contacto</a></li>
+                        <li><a href="/privacy.html">Privacidad</a></li>
+                        <li><a href="/terms.html">Términos de Servicio</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Contacto</h4>
+                    <div class="contact-info">
+                        <p><i class="fas fa-envelope"></i> info@despedidaeterna.com</p>
+                        <p><i class="fas fa-phone"></i> +54 11 1234-5678</p>
+                        <p><i class="fas fa-map-marker-alt"></i> Buenos Aires, Argentina</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Despedida Eterna. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Supabase CDN -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+    <!-- Scripts -->
+    <script src="assets/js/supabase-client.js"></script>
+    <script src="assets/js/main-supabase.js"></script>
+</body>
+</html> 

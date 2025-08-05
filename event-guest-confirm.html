@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Confirmar Asistencia</title>
+  <link rel="stylesheet" href="assets/css/event-guest-confirm.css">
+</head>
+<body>
+  <div class="confirm-container">
+    <h1>Confirmar Asistencia</h1>
+    <div id="guestInfo" class="guest-info-box">
+      <p>Cargando datos del invitado...</p>
+    </div>
+    <form id="confirmForm" style="display:none;">
+      <label>Acompañantes:
+        <input type="number" name="guest_count" min="1" value="1">
+      </label>
+      <label>Mensaje:
+        <input type="text" name="message" maxlength="200">
+      </label>
+      <div class="btn-group">
+        <button type="submit" class="confirm-btn">Confirmar asistencia</button>
+        <button type="button" class="decline-btn" id="declineBtn">No podré asistir</button>
+      </div>
+    </form>
+    <div id="resultMsg" class="result-msg"></div>
+  </div>
+  <script src="assets/js/event-guest-confirm.js"></script>
+</body>
+</html> 

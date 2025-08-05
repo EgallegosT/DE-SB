@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso - Despedida Eterna</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <style>
+        body { background: #f6fff6; }
+        .success-container { max-width: 600px; margin: 40px auto; background: #fff; border-radius: 16px; box-shadow: 0 2px 12px rgba(45,143,45,0.08); padding: 32px; text-align: center; }
+        .success-icon { font-size: 4rem; color: #2d8f2d; margin-bottom: 16px; }
+        .order-details { margin: 32px 0; text-align: left; background: #f8f9fa; padding: 24px; border-radius: 12px; }
+        .order-item { display: flex; justify-content: space-between; margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #e9ecef; }
+        .order-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+        .order-total { font-weight: 600; font-size: 1.2rem; color: #2d8f2d; margin-top: 16px; padding-top: 16px; border-top: 2px solid #e9ecef; }
+        .action-buttons { display: flex; gap: 16px; justify-content: center; margin-top: 32px; }
+        .btn { padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: 600; transition: all 0.3s ease; }
+        .btn-primary { background: #2d8f2d; color: white; }
+        .btn-primary:hover { background: #1e6b1e; }
+        .btn-outline { border: 2px solid #2d8f2d; color: #2d8f2d; background: white; }
+        .btn-outline:hover { background: #2d8f2d; color: white; }
+        .shipping-info { margin-top: 24px; padding: 16px; background: #e8f5e8; border-radius: 8px; border-left: 4px solid #2d8f2d; }
+        .loading { text-align: center; padding: 40px; }
+        .loading i { font-size: 2rem; color: #2d8f2d; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <a href="index.html">
+                    <i class="fas fa-heart"></i>
+                    <span>Despedida Eterna</span>
+                </a>
+            </div>
+            <nav class="nav">
+                <a href="index.html">Inicio</a>
+                <a href="public-memorials.html">Memoriales</a>
+                <a href="store.html">Tienda</a>
+                <a href="dashboard.html">Mi Cuenta</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="success-container">
+            <div class="success-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            
+            <h1>¡Pago Exitoso!</h1>
+            <p>Tu compra ha sido procesada correctamente. Gracias por tu confianza.</p>
+            
+            <div class="order-details" id="orderDetails">
+                <div class="loading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando detalles de la orden...</p>
+                </div>
+            </div>
+            
+            <div class="shipping-info">
+                <h4><i class="fas fa-truck"></i> Información de Envío</h4>
+                <p>Recibirás un email con el número de seguimiento una vez que tu pedido sea enviado.</p>
+                <p><strong>Tiempo estimado de entrega:</strong> <span id="shippingTime">5-7 días hábiles</span></p>
+            </div>
+            
+            <div class="action-buttons">
+                <a href="store.html" class="btn btn-outline">
+                    <i class="fas fa-shopping-cart"></i>
+                    Seguir Comprando
+                </a>
+                <a href="dashboard.html" class="btn btn-primary">
+                    <i class="fas fa-user"></i>
+                    Mi Cuenta
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Despedida Eterna. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="assets/js/pago-productos-exitoso.js"></script>
+</body>
+</html> 

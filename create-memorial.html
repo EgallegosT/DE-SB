@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Perfil Memorial - Despedida Eterna</title>
+    <meta name="description" content="Crea un perfil memorial único para honrar la memoria de tu ser querido">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/memorial-form.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/dashboard.html" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="/dashboard.html" class="btn btn-outline">
+                        <i class="fas fa-arrow-left"></i>
+                        Volver al Dashboard
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="form-header">
+                <h1 class="page-title" id="pageTitle">Crear Perfil Memorial</h1>
+                <p class="page-description">
+                    Honra la memoria de tu ser querido creando un perfil único y personalizado
+                </p>
+            </div>
+
+            <form class="memorial-form" id="memorialForm">
+                <!-- Opciones de Plan y Placa QR -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-gem"></i>
+                        Opciones de Plan
+                    </h2>
+                    <fieldset>
+                        <legend>Selecciona un plan:</legend>
+                        <label><input type="radio" name="plan_type" value="6m" checked> 6 meses <b>GRATIS</b></label><br>
+                        <label><input type="radio" name="plan_type" value="3y"> 3 años <b>$999 MXN</b></label><br>
+                        <label><input type="radio" name="plan_type" value="10y"> 10 años <b>$2999 MXN</b></label>
+                    </fieldset>
+                    <label style="margin-top:10px;display:block;">
+                        <input type="checkbox" name="has_qr_plate" id="hasQrPlate"> Añadir placa con QR <b>+$2999 MXN</b>
+                    </label>
+                    <div id="totalDisplay" style="font-size:1.3em;font-weight:600;color:#2d8f2d;margin:16px 0;">Total: $0 MXN</div>
+                </div>
+                <!-- Basic Information -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-user"></i>
+                        Información Básica
+                    </h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="name">Nombre Completo *</label>
+                            <input type="text" id="name" name="name" class="form-control" required>
+                            <small class="form-help">Nombre completo de la persona fallecida</small>
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">Fecha de Nacimiento</label>
+                            <input type="date" id="birthDate" name="birthDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="deathDate">Fecha de Fallecimiento</label>
+                            <input type="date" id="deathDate" name="deathDate" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthPlace">Lugar de Nacimiento</label>
+                            <input type="text" id="birthPlace" name="birthPlace" class="form-control" placeholder="Ciudad, País">
+                        </div>
+                        <div class="form-group">
+                            <label for="deathPlace">Lugar de Fallecimiento</label>
+                            <input type="text" id="deathPlace" name="deathPlace" class="form-control" placeholder="Ciudad, País">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Biography -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-book-open"></i>
+                        Biografía
+                    </h2>
+                    
+                    <div class="form-group">
+                        <label for="biography">Biografía</label>
+                        <textarea id="biography" name="biography" class="form-control" rows="6" 
+                                placeholder="Cuenta la historia de vida de tu ser querido, sus logros, pasiones, y el impacto que tuvo en la vida de otros..."></textarea>
+                        <small class="form-help">Comparte la historia de vida, logros, pasiones y el impacto que tuvo en otros</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="epitaph">Epitafio</label>
+                        <textarea id="epitaph" name="epitaph" class="form-control" rows="3" 
+                                placeholder="Una frase o poema especial que capture la esencia de tu ser querido..."></textarea>
+                        <small class="form-help">Una frase o poema especial que capture la esencia de tu ser querido</small>
+                    </div>
+                </div>
+
+                <!-- Images -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-images"></i>
+                        Galería de Imágenes
+                    </h2>
+                    
+                    <div class="image-upload-area" id="imageUploadArea">
+                        <div class="upload-placeholder">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <h3>Subir Imágenes</h3>
+                            <p>Arrastra y suelta imágenes aquí o haz clic para seleccionar</p>
+                            <input type="file" id="imageInput" multiple accept="image/*" style="display: none;">
+                            <button type="button" class="btn btn-outline" onclick="document.getElementById('imageInput').click()">
+                                Seleccionar Imágenes
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="images-grid" id="imagesGrid">
+                        <!-- Uploaded images will be displayed here -->
+                    </div>
+                    
+                    <small class="form-help">
+                        Puedes subir hasta 20 imágenes. La primera imagen será la imagen principal del perfil.
+                    </small>
+                </div>
+
+                <!-- Timeline -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-clock"></i>
+                        Timeline de Vida
+                    </h2>
+                    
+                    <div class="timeline-container" id="timelineContainer">
+                        <div class="timeline-item" id="timelineTemplate" style="display: none;">
+                            <div class="timeline-content">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label>Año</label>
+                                        <input type="number" class="form-control timeline-year" placeholder="2020">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Evento</label>
+                                        <input type="text" class="form-control timeline-event" placeholder="Descripción del evento">
+                                    </div>
+                                    <div class="form-group">
+                                        <button type="button" class="btn btn-danger btn-sm remove-timeline-item">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <button type="button" class="btn btn-outline" id="addTimelineItem">
+                        <i class="fas fa-plus"></i>
+                        Agregar Evento
+                    </button>
+                </div>
+
+                <!-- Settings -->
+                <div class="form-section">
+                    <h2 class="section-title">
+                        <i class="fas fa-cog"></i>
+                        Configuración
+                    </h2>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="themeColor">Color del Tema</label>
+                            <input type="color" id="themeColor" name="themeColor" class="form-control" value="#4A5568">
+                        </div>
+                        <div class="form-group">
+                            <label for="backgroundMusic">Música de Fondo (URL)</label>
+                            <input type="url" id="backgroundMusic" name="backgroundMusic" class="form-control" 
+                                   placeholder="https://ejemplo.com/musica.mp3">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isPublic" name="isPublic" checked>
+                            <span class="checkmark"></span>
+                            Perfil público (visible para todos)
+                        </label>
+                        <small class="form-help">Si está desmarcado, solo tú y las personas con el enlace podrán ver el perfil</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="allowMessages" name="allowMessages" checked>
+                            <span class="checkmark"></span>
+                            Permitir mensajes de condolencias
+                        </label>
+                        <small class="form-help">Los visitantes podrán dejar mensajes de condolencias</small>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="allowCandles" name="allowCandles" checked>
+                            <span class="checkmark"></span>
+                            Permitir velas virtuales
+                        </label>
+                        <small class="form-help">Los visitantes podrán encender velas virtuales</small>
+                    </div>
+                </div>
+
+                <!-- Form Actions -->
+                <div class="form-actions">
+                    <button type="button" class="btn btn-outline" id="saveDraftBtn">
+                        <i class="fas fa-save"></i>
+                        Guardar Borrador
+                    </button>
+                    <button type="submit" class="btn btn-primary" id="submitBtn">
+                        <i class="fas fa-check"></i>
+                        Crear Perfil Memorial
+                    </button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Preview Modal -->
+    <div class="modal" id="previewModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Vista Previa del Perfil</h3>
+                <button class="modal-close" id="closePreviewModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="preview-content" id="previewContent">
+                    <!-- Preview content will be generated here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Guardando perfil...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/memorial-form.js?v=3"></script>
+    <script src="assets/js/create-memorial-total.js"></script>
+</body>
+</html> 

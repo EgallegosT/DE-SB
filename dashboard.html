@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Despedida Eterna</title>
+    <meta name="description" content="Panel de control para gestionar tus perfiles memoriales y eventos">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+</head>
+<body class="dashboard-body">
+    <!-- Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="closeSidebar();"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-heart"></i>
+                <span>Despedida Eterna</span>
+            </div>
+            <button class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar();">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <ul class="nav-list">
+                <li class="nav-item active">
+                    <a href="#dashboard" class="nav-link" data-section="dashboard">
+                        <i class="fas fa-tachometer-alt"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#memorials" class="nav-link" data-section="memorials">
+                        <i class="fas fa-user-circle"></i>
+                        <span>Perfiles Memoriales</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#events" class="nav-link" data-section="events">
+                        <i class="fas fa-calendar-alt"></i>
+                        <span>Eventos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#store" class="nav-link" data-section="store">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Tienda</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#orders" class="nav-link" data-section="orders">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Mis Pedidos</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#subscriptions" class="nav-link" data-section="subscriptions">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Suscripciones</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#profile" class="nav-link" data-section="profile">
+                        <i class="fas fa-user"></i>
+                        <span>Mi Perfil</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <button class="btn btn-outline btn-full" id="logoutBtn">
+                <i class="fas fa-sign-out-alt"></i>
+                Cerrar Sesión
+            </button>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Top Header -->
+        <header class="top-header">
+            <div class="header-left">
+                <button class="menu-toggle" id="menuToggle" onclick="toggleSidebar();">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <h1 class="page-title">Dashboard</h1>
+            </div>
+            
+            <div class="header-right">
+                <div class="user-menu">
+                    <div class="user-info">
+                        <img src="assets/images/default-avatar.png" alt="Usuario" class="user-avatar" id="userAvatar">
+                        <span class="user-name" id="userName">Usuario</span>
+                    </div>
+                    <div class="notifications">
+                        <button class="notification-btn" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationCount">0</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Section -->
+        <section class="dashboard-section active" id="dashboardSection">
+            <!-- Stats Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="memorialCount">0</h3>
+                        <p class="stat-label">Perfiles Memoriales</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="eventCount">0</h3>
+                        <p class="stat-label">Eventos Activos</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalViews">0</h3>
+                        <p class="stat-label">Visitas Totales</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalCandles">0</h3>
+                        <p class="stat-label">Velas Encendidas</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="quick-actions">
+                <h2 class="section-title">Acciones Rápidas</h2>
+                <div class="actions-grid">
+                    <button class="action-card" id="createMemorialBtn">
+                        <i class="fas fa-plus"></i>
+                        <span>Crear Perfil Memorial</span>
+                    </button>
+                    <button class="action-card" id="createEventBtn">
+                        <i class="fas fa-calendar-plus"></i>
+                        <span>Organizar Evento</span>
+                    </button>
+                    <button class="action-card" id="viewStoreBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span>Visitar Tienda</span>
+                    </button>
+                    <button class="action-card" id="viewCartBtn">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span>Ver Carrito</span>
+                        <span class="cart-badge" id="dashboardCartCount">0</span>
+                    </button>
+                    <button class="action-card" id="inviteFriendsBtn">
+                        <i class="fas fa-user-plus"></i>
+                        <span>Invitar Amigos</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Recent Activity -->
+            <div class="recent-activity">
+                <h2 class="section-title">Actividad Reciente</h2>
+                <div class="activity-list" id="activityList">
+                    <!-- Activity items will be loaded here -->
+                </div>
+            </div>
+
+            <!-- Charts Section -->
+            <div class="charts-section">
+                <div class="chart-container">
+                    <h3 class="chart-title">Visitas por Mes</h3>
+                    <canvas id="visitsChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3 class="chart-title">Mensajes Recibidos</h3>
+                    <canvas id="messagesChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Memorials Section -->
+        <section class="memorials-section" id="memorialsSection">
+            <div class="section-header">
+                <h2 class="section-title">Mis Perfiles Memoriales</h2>
+                <button class="btn btn-primary" id="newMemorialBtn">
+                    <i class="fas fa-plus"></i>
+                    Nuevo Perfil
+                </button>
+            </div>
+            
+            <div class="memorials-grid" id="memorialsGrid">
+                <!-- Memorial cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Events Section -->
+        <section class="events-section" id="eventsSection">
+            <div class="section-header">
+                <h2 class="section-title">Mis Eventos</h2>
+                <button class="btn btn-primary" id="newEventBtn">
+                    <i class="fas fa-plus"></i>
+                    Nuevo Evento
+                </button>
+            </div>
+            
+            <div class="events-grid" id="eventsGrid">
+                <!-- Event cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Store Section -->
+        <section class="store-section" id="storeSection">
+            <div class="section-header">
+                <h2 class="section-title">Tienda Memorial</h2>
+                <div class="store-filters">
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">Todas las categorías</option>
+                        <option value="placas">Placas con QR</option>
+                        <option value="flores">Arreglos Florales</option>
+                        <option value="velas">Velas Personalizadas</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Product cards will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Orders Section -->
+        <section class="orders-section" id="ordersSection">
+            <div class="section-header">
+                <h2 class="section-title">Mis Pedidos</h2>
+            </div>
+            
+            <div class="orders-list" id="ordersList">
+                <!-- Order items will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Subscriptions Section -->
+        <section class="subscriptions-section" id="subscriptionsSection">
+            <div class="section-header">
+                <h2 class="section-title">Mis Suscripciones</h2>
+                <div class="subscription-actions">
+                    <button class="btn btn-outline" id="viewPlansBtn">
+                        <i class="fas fa-list"></i>
+                        Ver Planes
+                    </button>
+                    <button class="btn btn-primary" id="upgradePlanBtn">
+                        <i class="fas fa-arrow-up"></i>
+                        Mejorar Plan
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Subscription Stats -->
+            <div class="subscription-stats">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="activeSubscriptionsCount">0</h3>
+                        <p class="stat-label">Suscripciones Activas</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-calendar-check"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="totalMemorialsCount">0</h3>
+                        <p class="stat-label">Perfiles Memoriales</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="expiringSoonCount">0</h3>
+                        <p class="stat-label">Vencen Pronto</p>
+                    </div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3 class="stat-number" id="monthlySpending">$0</h3>
+                        <p class="stat-label">Gasto Mensual</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subscription Plans Info -->
+            <div class="plans-info">
+                <h3>Planes Disponibles</h3>
+                <div class="plans-grid">
+                    <div class="plan-card basic">
+                        <div class="plan-header">
+                            <h4>Básico</h4>
+                            <div class="plan-price">$9.99<span>/mes</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 1 Perfil Memorial</li>
+                            <li><i class="fas fa-check"></i> 5 Fotos</li>
+                            <li><i class="fas fa-check"></i> Mensajes Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Velas Virtuales</li>
+                            <li><i class="fas fa-times"></i> Sin Eventos</li>
+                            <li><i class="fas fa-times"></i> Sin Estadísticas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-card standard">
+                        <div class="plan-header">
+                            <h4>Estándar</h4>
+                            <div class="plan-price">$19.99<span>/mes</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 3 Perfiles Memoriales</li>
+                            <li><i class="fas fa-check"></i> 20 Fotos</li>
+                            <li><i class="fas fa-check"></i> Mensajes Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Velas Virtuales</li>
+                            <li><i class="fas fa-check"></i> 2 Eventos por Mes</li>
+                            <li><i class="fas fa-check"></i> Estadísticas Básicas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-card premium">
+                        <div class="plan-header">
+                            <h4>Premium</h4>
+                            <div class="plan-price">$39.99<span>/mes</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> 10 Perfiles Memoriales</li>
+                            <li><i class="fas fa-check"></i> Fotos Ilimitadas</li>
+                            <li><i class="fas fa-check"></i> Mensajes Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Velas Virtuales</li>
+                            <li><i class="fas fa-check"></i> Eventos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Estadísticas Avanzadas</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="plan-card eternal">
+                        <div class="plan-header">
+                            <h4>Eterno</h4>
+                            <div class="plan-price">$199.99<span>/año</span></div>
+                        </div>
+                        <ul class="plan-features">
+                            <li><i class="fas fa-check"></i> Perfiles Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Fotos Ilimitadas</li>
+                            <li><i class="fas fa-check"></i> Mensajes Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Velas Virtuales</li>
+                            <li><i class="fas fa-check"></i> Eventos Ilimitados</li>
+                            <li><i class="fas fa-check"></i> Estadísticas Completas</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Active Subscriptions -->
+            <div class="subscriptions-content">
+                <h3>Suscripciones Activas</h3>
+                <div class="subscriptions-list" id="subscriptionsList">
+                    <!-- Subscription items will be loaded here -->
+                </div>
+                
+                <div class="subscriptions-empty" id="subscriptionsEmpty" style="display: none;">
+                    <i class="fas fa-credit-card"></i>
+                    <h3>No tienes suscripciones activas</h3>
+                    <p>Comienza con un plan para crear perfiles memoriales</p>
+                    <button class="btn btn-primary" onclick="dashboard.showPlansModal()">
+                        <i class="fas fa-plus"></i>
+                        Suscribirse
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Payment History -->
+            <div class="payment-history">
+                <h3>Historial de Pagos</h3>
+                <div class="payment-list" id="paymentList">
+                    <!-- Payment history will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="profile-section" id="profileSection">
+            <div class="section-header">
+                <h2 class="section-title">Mi Perfil</h2>
+            </div>
+            <div class="profile-content modern-profile">
+                <div class="profile-avatar-card">
+                                         <div class="profile-avatar-wrapper">
+                         <img src="assets/images/default-avatar.png" alt="Foto de perfil" class="profile-avatar" id="profileAvatarPreview">
+                         <label for="profileAvatarInput" class="avatar-upload-btn" title="Cambiar foto de perfil">
+                             <i class="fas fa-camera"></i>
+                         </label>
+                         <input type="file" id="profileAvatarInput" accept="image/*" style="position: absolute; opacity: 0; width: 1px; height: 1px;">
+                     </div>
+                    <div class="profile-avatar-actions">
+                        <button class="btn btn-outline btn-small" id="removeAvatarBtn" type="button">
+                            <i class="fas fa-trash"></i> Quitar foto
+                        </button>
+                    </div>
+                </div>
+                <div class="profile-form-card">
+                    <form id="profileForm">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="firstName">Nombre</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="lastName">Apellido</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control" required>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" class="form-control" required readonly>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group full-width">
+                                <label for="phone">Teléfono</label>
+                                <input type="tel" id="phone" name="phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="memorialDuration">Duración del Perfil Memorial</label>
+                            <div id="memorialDuration" class="duration-options" style="display:flex;gap:18px;margin-top:6px;">
+                                <label class="duration-radio" style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                                    <input type="radio" name="duration" value="1m" checked>
+                                    <span>1 mes</span>
+                                    <span style="color:#2d8f2d;font-weight:600;font-size:1rem;margin-left:4px;">250 créditos</span>
+                                </label>
+                                <label class="duration-radio" style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                                    <input type="radio" name="duration" value="6m">
+                                    <span>6 meses</span>
+                                    <span style="color:#2d8f2d;font-weight:600;font-size:1rem;margin-left:4px;">500 créditos</span>
+                                </label>
+                                <label class="duration-radio" style="display:flex;align-items:center;gap:6px;cursor:pointer;">
+                                    <input type="radio" name="duration" value="10y">
+                                    <span>10 años</span>
+                                    <span style="color:#2d8f2d;font-weight:600;font-size:1rem;margin-left:4px;">5000 créditos</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="profile-form-actions">
+                            <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                            <button type="button" class="btn btn-outline" id="openChangePasswordModal">
+                                <i class="fas fa-key"></i> Cambiar Contraseña
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modals -->
+    <div class="modal" id="createMemorialModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crear Nuevo Perfil Memorial</h3>
+                <button class="modal-close" id="closeMemorialModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createMemorialForm">
+                    <div class="form-group">
+                        <label for="memorialName">Nombre del Ser Querido</label>
+                        <input type="text" id="memorialName" name="name" class="form-control" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="birthDate">Fecha de Nacimiento</label>
+                            <input type="date" id="birthDate" name="birthDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="deathDate">Fecha de Fallecimiento</label>
+                            <input type="date" id="deathDate" name="deathDate" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="biography">Biografía</label>
+                        <textarea id="biography" name="biography" class="form-control" rows="4"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="epitaph">Epitafio</label>
+                        <textarea id="epitaph" name="epitaph" class="form-control" rows="2"></textarea>
+                    </div>
+                    <!-- Opciones de Plan y Placa QR -->
+                    <div class="form-section">
+                        <h2 class="section-title">
+                            <i class="fas fa-gem"></i>
+                            Opciones de Plan
+                        </h2>
+                        <fieldset>
+                            <legend>Selecciona un plan:</legend>
+                            <label><input type="radio" name="plan_type" value="6m" checked> 6 meses <b>GRATIS</b></label><br>
+                            <label><input type="radio" name="plan_type" value="3y"> 3 años <b>$999 MXN</b></label><br>
+                            <label><input type="radio" name="plan_type" value="10y"> 10 años <b>$2999 MXN</b></label>
+                        </fieldset>
+                        <label style="margin-top:10px;display:block;">
+                            <input type="checkbox" name="has_qr_plate" id="modalHasQrPlate"> Añadir placa con QR <b>+$2999 MXN</b>
+                        </label>
+                        <div id="modalTotalDisplay" style="font-size:1.3em;font-weight:600;color:#2d8f2d;margin:16px 0;">Total: $0 MXN</div>
+                    </div>
+                                         <div class="form-group">
+                         <label for="memorialPhoto">Foto de Perfil</label>
+                         <div class="file-upload-container">
+                             <input type="file" id="memorialPhoto" name="memorial_images" class="file-input" accept="image/*" multiple style="position: absolute; opacity: 0; width: 1px; height: 1px;">
+                             <div class="file-upload-area" id="fileUploadArea" onclick="document.getElementById('memorialPhoto').click();">
+                                 <i class="fas fa-cloud-upload-alt"></i>
+                                 <p>Arrastra y suelta imágenes aquí o <span class="file-upload-text">selecciona archivos</span></p>
+                                 <small>Formatos permitidos: JPG, PNG, GIF, WEBP (máx. 5MB cada una)</small>
+                             </div>
+                             <div class="file-preview" id="filePreview"></div>
+                         </div>
+                     </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelMemorialBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear Perfil</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para crear evento -->
+    <div class="modal" id="createEventModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Crear Nuevo Evento</h3>
+                <button class="modal-close" id="closeEventModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="createEventForm">
+                    <div class="form-group">
+                        <label for="eventTitle">Título del Evento</label>
+                        <input type="text" id="eventTitle" name="title" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventDescription">Descripción</label>
+                        <textarea id="eventDescription" name="description" class="form-control" rows="3"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventDate">Fecha y Hora</label>
+                            <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventLocation">Lugar</label>
+                            <input type="text" id="eventLocation" name="location" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="eventAddress">Dirección</label>
+                        <input type="text" id="eventAddress" name="address" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventItinerary">Itinerario</label>
+                        <textarea id="eventItinerary" name="itinerary" class="form-control" rows="2"></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="eventIsPublic">¿Evento Público?</label>
+                            <select id="eventIsPublic" name="isPublic" class="form-control">
+                                <option value="true">Sí</option>
+                                <option value="false">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="eventIsVirtual">¿Evento Virtual?</label>
+                            <select id="eventIsVirtual" name="isVirtual" class="form-control">
+                                <option value="false">No</option>
+                                <option value="true">Sí</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="virtualLinkGroup" style="display:none;">
+                        <label for="eventVirtualLink">Enlace Virtual</label>
+                        <input type="url" id="eventVirtualLink" name="virtualLink" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="eventMaxGuests">Máximo de Invitados</label>
+                        <input type="number" id="eventMaxGuests" name="maxGuests" class="form-control" min="1" max="1000">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelEventBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Crear Evento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Notification Panel -->
+    <div class="notification-panel" id="notificationPanel">
+        <div class="notification-header">
+            <h3>Notificaciones</h3>
+            <button class="notification-close" id="closeNotificationPanel">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-list" id="notificationList">
+            <!-- Notifications will be loaded here -->
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Cargando...</p>
+        </div>
+    </div>
+
+    <!-- Modal Cambiar Contraseña -->
+    <div class="modal" id="changePasswordModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Cambiar Contraseña</h3>
+                <button class="modal-close" id="closeChangePasswordModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="changePasswordForm">
+                    <div class="form-group">
+                        <label for="currentPassword">Contraseña Actual</label>
+                        <input type="password" id="currentPassword" name="currentPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="newPassword">Nueva Contraseña</label>
+                        <input type="password" id="newPassword" name="newPassword" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmNewPassword">Confirmar Nueva Contraseña</label>
+                        <input type="password" id="confirmNewPassword" name="confirmNewPassword" class="form-control" required>
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelChangePasswordBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Actualizar Contraseña</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para ver memorial -->
+    <div class="modal" id="viewMemorialModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="viewMemorialTitle">Ver Memorial</h3>
+                <button class="modal-close" id="closeViewMemorialModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="memorial-view-container">
+                    <div class="memorial-header">
+                        <div class="memorial-avatar">
+                            <img id="viewMemorialAvatar" src="assets/images/default-avatar.png" alt="Avatar del memorial">
+                        </div>
+                        <div class="memorial-info">
+                            <h2 id="viewMemorialName">Nombre del Memorial</h2>
+                            <p id="viewMemorialDates" class="memorial-dates">Fechas</p>
+                            <div class="memorial-stats">
+                                <span class="stat">
+                                    <i class="fas fa-eye"></i> <span id="viewMemorialViews">0</span> visitas
+                                </span>
+                                <span class="stat">
+                                    <i class="fas fa-heart"></i> <span id="viewMemorialCandles">0</span> velas
+                                </span>
+                                <span class="stat">
+                                    <i class="fas fa-comment"></i> <span id="viewMemorialMessages">0</span> mensajes
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memorial-content">
+                        <div class="memorial-section">
+                            <h3>Biografía</h3>
+                            <p id="viewMemorialBiography">Biografía del memorial...</p>
+                        </div>
+                        
+                        <div class="memorial-section">
+                            <h3>Galería de Imágenes</h3>
+                            <div id="viewMemorialGallery" class="memorial-gallery">
+                                <!-- Las imágenes se cargarán dinámicamente -->
+                            </div>
+                        </div>
+                        
+                        <div class="memorial-section">
+                            <h3>Información del Plan</h3>
+                            <div class="plan-info">
+                                <p><strong>Plan:</strong> <span id="viewMemorialPlan">Plan Básico</span></p>
+                                <p><strong>Estado:</strong> <span id="viewMemorialStatus">Activo</span></p>
+                                <p><strong>Visibilidad:</strong> <span id="viewMemorialVisibility">Público</span></p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="memorial-actions">
+                        <button class="btn btn-primary" onclick="dashboard.editCurrentMemorial()">
+                            <i class="fas fa-edit"></i> Editar Memorial
+                        </button>
+                        <button class="btn btn-outline" onclick="dashboard.shareCurrentMemorial()">
+                            <i class="fas fa-share"></i> Compartir
+                        </button>
+                        <button class="btn btn-outline" onclick="dashboard.viewMemorialPublic()">
+                            <i class="fas fa-external-link-alt"></i> Ver Público
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para editar memorial -->
+    <div class="modal" id="editMemorialModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Editar Memorial</h3>
+                <button class="modal-close" id="closeEditMemorialModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="editMemorialForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editMemorialName">Nombre del Memorial *</label>
+                            <input type="text" id="editMemorialName" name="name" class="form-control" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editMemorialBirthDate">Fecha de Nacimiento</label>
+                            <input type="date" id="editMemorialBirthDate" name="birthDate" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editMemorialDeathDate">Fecha de Fallecimiento</label>
+                            <input type="date" id="editMemorialDeathDate" name="deathDate" class="form-control">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="editMemorialBiography">Biografía</label>
+                        <textarea id="editMemorialBiography" name="biography" class="form-control" rows="4" placeholder="Cuenta la historia de tu ser querido..."></textarea>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editMemorialLocation">Lugar de Nacimiento</label>
+                            <input type="text" id="editMemorialLocation" name="location" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="editMemorialOccupation">Lugar de Defunción</label>
+                            <input type="text" id="editMemorialOccupation" name="occupation" class="form-control">
+                        </div>
+                    </div>
+                    
+
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="editMemorialIsPublic">Visibilidad</label>
+                            <select id="editMemorialIsPublic" name="isPublic" class="form-control">
+                                <option value="true">Público</option>
+                                <option value="false">Privado</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editMemorialIsActive">Estado</label>
+                            <select id="editMemorialIsActive" name="isActive" class="form-control">
+                                <option value="true">Activo</option>
+                                <option value="false">Inactivo</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Imágenes del Memorial</label>
+                        <div class="file-upload-area" onclick="document.getElementById('editMemorialImages').click();">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <p>Haz clic para agregar más imágenes</p>
+                            <input type="file" id="editMemorialImages" name="images" multiple accept="image/*" style="position: absolute; opacity: 0; width: 1px; height: 1px;">
+                        </div>
+                        <div id="editMemorialImagesPreview" class="images-preview">
+                            <!-- Las imágenes existentes y nuevas se mostrarán aquí -->
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Timeline de Vida</label>
+                        <div id="editMemorialTimeline" class="timeline-list">
+                            <!-- Los eventos del timeline se mostrarán aquí -->
+                        </div>
+                        <button type="button" class="btn btn-outline btn-sm" onclick="dashboard.addTimelineEvent()">
+                            <i class="fas fa-plus"></i> Agregar Evento al Timeline
+                        </button>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelEditMemorialBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar/editar timeline -->
+    <div id="timelineModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="timelineModalTitle">Agregar evento al timeline</h3>
+                <button class="modal-close" id="closeTimelineModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="timelineForm">
+                    <div class="form-group">
+                        <label for="timelineTitle">Título del evento *</label>
+                        <input type="text" id="timelineTitle" name="title" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timelineDate">Fecha del evento *</label>
+                        <input type="date" id="timelineDate" name="date" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="timelineDescription">Descripción</label>
+                        <textarea id="timelineDescription" name="description" class="form-control" rows="3" placeholder="Describe el evento..."></textarea>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelTimelineBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Guardar Evento</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+            <!-- Scripts -->
+                    <script src="assets/js/supabase-client.js?v=16"></script>
+    <script src="assets/js/carrito.js"></script>
+    <script src="assets/js/dashboard-supabase.js"></script>
+    <script src="assets/js/cart-counter.js"></script>
+    <script>
+        // Esperar a que el cliente de Supabase esté disponible
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Esperar a que el cliente de Supabase se inicialice
+            await new Promise(resolve => {
+                const checkSupabase = () => {
+                    if (window.supabaseClient) {
+                        resolve();
+                    } else {
+                        setTimeout(checkSupabase, 100);
+                    }
+                };
+                checkSupabase();
+            });
+            
+            // Verificar autenticación con retraso para asegurar que la sesión esté establecida
+            const client = window.supabaseClient;
+            
+            // Esperar un poco más para que la sesión se establezca completamente
+            await new Promise(resolve => setTimeout(resolve, 1000));
+            
+            console.log('🔐 Verificando autenticación...');
+            console.log('👤 Usuario en cliente:', client.getUser());
+            console.log('🔑 Sesión en cliente:', client.getSession());
+            console.log('✅ ¿Autenticado?:', client.isAuthenticated());
+            
+            if (!client.isAuthenticated()) {
+                console.log('❌ Usuario no autenticado, redirigiendo al login');
+                window.location.href = '/login.html';
+                return;
+            }
+            
+            console.log('✅ Usuario autenticado, inicializando dashboard');
+            
+            // Funciones globales para el sidebar (respaldo)
+            window.toggleSidebar = function() {
+                console.log('🌐 Función global toggleSidebar llamada');
+                if (window.dashboard) {
+                    window.dashboard.toggleSidebar();
+                } else {
+                    console.error('❌ Dashboard no disponible en función global');
+                }
+            };
+            
+            window.closeSidebar = function() {
+                console.log('🌐 Función global closeSidebar llamada');
+                if (window.dashboard) {
+                    window.dashboard.closeSidebar();
+                } else {
+                    console.error('❌ Dashboard no disponible en función global');
+                }
+            };
+            
+            // Inicializar dashboard
+            window.dashboard = new DashboardSupabase();
+            
+            // Configurar logout
+            const logoutBtn = document.getElementById('logoutBtn');
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', async () => {
+                    try {
+                        const result = await client.logout();
+                        if (result.success) {
+                            window.location.href = '/login.html';
+                        } else {
+                            console.error('Error al cerrar sesión:', result.message);
+                        }
+                    } catch (error) {
+                        console.error('Error al cerrar sesión:', error);
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

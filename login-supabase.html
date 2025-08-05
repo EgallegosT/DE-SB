@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión - Despedida Eterna</title>
+    <meta name="description" content="Inicia sesión en Despedida Eterna para acceder a tus perfiles memoriales.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        .login-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+        }
+        
+        .login-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .login-logo i {
+            font-size: 2.5rem;
+            color: #e74c3c;
+            margin-right: 10px;
+        }
+        
+        .login-logo span {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #2c3e50;
+        }
+        
+        .login-title {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .login-subtitle {
+            color: #7f8c8d;
+            font-size: 1rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2c3e50;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #ecf0f1;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #3498db;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1);
+        }
+        
+        .form-input.error {
+            border-color: #e74c3c;
+            background: #fdf2f2;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.875rem;
+            margin-top: 5px;
+            display: none;
+        }
+        
+        .error-message.show {
+            display: block;
+        }
+        
+        .login-button {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .login-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(231, 76, 60, 0.3);
+        }
+        
+        .login-button:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .button-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .button-text {
+            margin-right: 10px;
+        }
+        
+        .button-spinner {
+            display: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid transparent;
+            border-top: 2px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .register-link {
+            text-align: center;
+            margin-top: 20px;
+            color: #7f8c8d;
+        }
+        
+        .register-link a {
+            color: #3498db;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+        
+        .forgot-password {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .forgot-password a {
+            color: #3498db;
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+        
+        .forgot-password a:hover {
+            text-decoration: underline;
+        }
+        
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 15px 20px;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: transform 0.3s ease;
+        }
+        
+        .notification.show {
+            transform: translateX(0);
+        }
+        
+        .notification-success {
+            background: #27ae60;
+        }
+        
+        .notification-error {
+            background: #e74c3c;
+        }
+        
+        .notification-info {
+            background: #3498db;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-card">
+            <div class="login-header">
+                <div class="login-logo">
+                    <i class="fas fa-heart"></i>
+                    <span>Despedida Eterna</span>
+                </div>
+                <h1 class="login-title">Iniciar Sesión</h1>
+                <p class="login-subtitle">Accede a tu cuenta para gestionar tus perfiles memoriales</p>
+            </div>
+            
+            <form id="loginForm">
+                <div class="form-group">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" id="email" name="email" class="form-input" required>
+                    <div id="emailError" class="error-message"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password" class="form-label">Contraseña</label>
+                    <input type="password" id="password" name="password" class="form-input" required>
+                    <div id="passwordError" class="error-message"></div>
+                </div>
+                
+                <button type="submit" id="loginButton" class="login-button">
+                    <div class="button-content">
+                        <span id="loginButtonText" class="button-text">Iniciar Sesión</span>
+                        <div id="loginSpinner" class="button-spinner"></div>
+                    </div>
+                </button>
+            </form>
+            
+            <div class="forgot-password">
+                <a href="/reset-password.html">¿Olvidaste tu contraseña?</a>
+            </div>
+            
+            <div class="register-link">
+                ¿No tienes una cuenta? <a href="/register.html">Regístrate</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Supabase CDN -->
+    <script src="https://unpkg.com/@supabase/supabase-js@2"></script>
+    
+    <!-- Scripts -->
+    <script src="assets/js/supabase-client.js"></script>
+    
+    <script>
+        // Esperar a que el cliente de Supabase esté disponible
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Esperar a que el cliente de Supabase se inicialice
+            await new Promise(resolve => {
+                const checkSupabase = () => {
+                    if (window.supabaseClient) {
+                        resolve();
+                    } else {
+                        setTimeout(checkSupabase, 100);
+                    }
+                };
+                checkSupabase();
+            });
+            
+            // Inicializar el formulario
+            initLoginForm();
+        });
+
+        function initLoginForm() {
+            const form = document.getElementById('loginForm');
+            const client = window.supabaseClient;
+            
+            // Manejar envío del formulario
+            form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                
+                if (!validateForm()) {
+                    return;
+                }
+                
+                // Mostrar estado de carga
+                const loginButton = document.getElementById('loginButton');
+                const loginButtonText = document.getElementById('loginButtonText');
+                const loginSpinner = document.getElementById('loginSpinner');
+                
+                loginButton.disabled = true;
+                loginButtonText.style.display = 'none';
+                loginSpinner.style.display = 'block';
+                
+                try {
+                    // Preparar datos para el login
+                    const credentials = {
+                        email: document.getElementById('email').value,
+                        password: document.getElementById('password').value,
+                    };
+                    
+                    // Intentar login con Supabase
+                    const result = await client.login(credentials);
+                    
+                    if (result.success) {
+                        showNotification('¡Inicio de sesión exitoso!', 'success');
+                        
+                        // Redirigir al dashboard después de 1 segundo
+                        setTimeout(() => {
+                            window.location.href = '/dashboard.html';
+                        }, 1000);
+                    } else {
+                        showNotification(result.message || 'Error en las credenciales', 'error');
+                    }
+                } catch (error) {
+                    console.error('Error en login:', error);
+                    showNotification('Error inesperado en el inicio de sesión. Intenta nuevamente.', 'error');
+                } finally {
+                    // Restaurar estado del botón
+                    loginButton.disabled = false;
+                    loginButtonText.style.display = 'block';
+                    loginSpinner.style.display = 'none';
+                }
+            });
+        }
+        
+        function validateForm() {
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            let isValid = true;
+            
+            // Validar email
+            if (!email) {
+                showFieldError('email', 'El email es requerido');
+                isValid = false;
+            } else if (!client.validateEmail(email)) {
+                showFieldError('email', 'Por favor ingresa un email válido');
+                isValid = false;
+            } else {
+                clearFieldError('email');
+            }
+            
+            // Validar contraseña
+            if (!password) {
+                showFieldError('password', 'La contraseña es requerida');
+                isValid = false;
+            } else {
+                clearFieldError('password');
+            }
+            
+            return isValid;
+        }
+        
+        function showFieldError(fieldName, message) {
+            const field = document.getElementById(fieldName);
+            const error = document.getElementById(fieldName + 'Error');
+            
+            field.classList.add('error');
+            error.textContent = message;
+            error.classList.add('show');
+        }
+        
+        function clearFieldError(fieldName) {
+            const field = document.getElementById(fieldName);
+            const error = document.getElementById(fieldName + 'Error');
+            
+            field.classList.remove('error');
+            error.classList.remove('show');
+        }
+        
+        function showNotification(message, type = 'info') {
+            const notification = document.createElement('div');
+            notification.className = `notification notification-${type}`;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            // Mostrar notificación
+            setTimeout(() => {
+                notification.classList.add('show');
+            }, 100);
+            
+            // Ocultar después de 5 segundos
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => {
+                    notification.remove();
+                }, 300);
+            }, 5000);
+        }
+    </script>
+</body>
+</html> 

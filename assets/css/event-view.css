@@ -1,0 +1,143 @@
+/* Estilos base para la vista de eventos en Despedida Eterna */
+
+.event-hero {
+    position: relative;
+    background: linear-gradient(120deg, #e0e7ff 0%, #f8fafc 100%);
+    padding: 48px 0 32px 0;
+    min-height: 320px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event-portrait {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #fff;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    background: #f3f4f6;
+}
+.hero-text {
+    margin-left: 32px;
+}
+.event-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 8px;
+}
+.event-meta {
+    display: flex;
+    gap: 16px;
+    color: #4b5563;
+    font-size: 1rem;
+    margin-bottom: 12px;
+}
+.event-description {
+    font-size: 1.1rem;
+    color: #374151;
+    margin-bottom: 0;
+}
+
+/* Tabs */
+.content-nav {
+    display: flex;
+    gap: 12px;
+    margin: 32px 0 24px 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+.nav-tab {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    padding: 12px 24px;
+    cursor: pointer;
+    color: #6b7280;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+}
+.nav-tab.active {
+    color: #2563eb;
+    border-bottom: 3px solid #2563eb;
+    font-weight: 600;
+}
+
+/* Tab content */
+.content-tab {
+    display: none;
+    padding: 24px 0;
+}
+.content-tab.active {
+    display: block;
+}
+
+.info-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+    margin-top: 16px;
+}
+.detail-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 16px 20px;
+    min-width: 220px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+.detail-item i {
+    font-size: 1.5rem;
+    color: #6366f1;
+    margin-top: 2px;
+}
+.detail-item h4 {
+    font-size: 1.1rem;
+    margin: 0 0 2px 0;
+    color: #374151;
+}
+.detail-item p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 1rem;
+}
+
+/* Itinerario y mapa */
+.itinerary-content, .map-content {
+    background: #f3f4f6;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+#eventMap iframe {
+    border-radius: 10px;
+    border: none;
+    width: 100%;
+    min-height: 250px;
+}
+
+/* Mensajes */
+.messages-content {
+    background: #f9fafb;
+    border-radius: 10px;
+    padding: 24px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+}
+
+@media (max-width: 900px) {
+    .hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .hero-text {
+        margin-left: 0;
+        margin-top: 24px;
+    }
+    .info-details {
+        flex-direction: column;
+        gap: 16px;
+    }
+} 

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Alta de Invitados</title>
+  <link rel="stylesheet" href="assets/css/dashboard.css">
+  <link rel="stylesheet" href="assets/css/event-guests.css">
+</head>
+<body>
+  <h1>Agregar Invitados al Evento</h1>
+  <form id="guestForm">
+    <label>Nombre: <input type="text" name="name" required></label><br>
+    <label>WhatsApp: <input type="text" name="phone" required></label><br>
+    <label>Email: <input type="email" name="email"></label><br>
+    <label>Acompañantes: <input type="number" name="guest_count" min="1" value="1"></label><br>
+    <label>Mensaje: <input type="text" name="message"></label><br>
+    <button type="submit">Agregar Invitado</button>
+  </form>
+
+  <h2>Invitados registrados</h2>
+  <ul id="guestList"></ul>
+
+  <script src="assets/js/event-guest.js"></script>
+</body>
+</html>

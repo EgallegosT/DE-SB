@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrito de Compras - Despedida Eterna</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/carrito.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="index.html" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-menu" id="navbarMenu">
+                    <a href="index.html" class="nav-link">Inicio</a>
+                    <a href="public-memorials.html" class="nav-link">Memoriales</a>
+                    <a href="store.html" class="nav-link">Tienda</a>
+                    <a href="dashboard.html" class="nav-link">Mi Cuenta</a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="login.html" class="btn btn-login">Iniciar Sesión</a>
+                    <a href="register.html" class="btn btn-primary">Registrarse</a>
+                </div>
+                
+                <button class="navbar-toggle" id="navbarToggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="cart-header">
+                <h1><i class="fas fa-shopping-cart"></i> Carrito de Compras</h1>
+                <a href="store.html" class="continue-shopping">
+                    <i class="fas fa-arrow-left"></i> Continuar Comprando
+                </a>
+            </div>
+
+            <div class="cart-content">
+                <!-- Cart Items -->
+                <div class="cart-items" id="cartItems">
+                    <!-- Los items del carrito se cargarán dinámicamente -->
+                    <div class="empty-cart" id="emptyCart">
+                        <i class="fas fa-shopping-cart"></i>
+                        <h3>Tu carrito está vacío</h3>
+                        <p>Agrega productos de nuestra tienda para comenzar</p>
+                        <a href="store.html" class="btn btn-primary">Ir a la Tienda</a>
+                    </div>
+                </div>
+
+                <!-- Cart Summary -->
+                <div class="cart-summary">
+                    <div class="summary-header">
+                        <h3>Resumen de Compra</h3>
+                    </div>
+                    
+                    <div class="summary-items">
+                        <div class="summary-item">
+                            <span>Subtotal:</span>
+                            <span id="subtotal">$0.00</span>
+                        </div>
+                        <div class="summary-item">
+                            <span>Envío:</span>
+                            <span id="shipping">$0.00</span>
+                        </div>
+                        <div class="summary-item total">
+                            <span>Total:</span>
+                            <span id="total">$0.00</span>
+                        </div>
+                    </div>
+
+                    <div class="shipping-info">
+                        <h4>Información de Envío</h4>
+                        <div class="shipping-options">
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="standard" checked>
+                                <span class="option-details">
+                                    <span class="option-name">Envío Estándar</span>
+                                    <span class="option-price">$150.00</span>
+                                    <span class="option-time">5-7 días hábiles</span>
+                                </span>
+                            </label>
+                            <label class="shipping-option">
+                                <input type="radio" name="shipping" value="express">
+                                <span class="option-details">
+                                    <span class="option-name">Envío Express</span>
+                                    <span class="option-price">$300.00</span>
+                                    <span class="option-time">2-3 días hábiles</span>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="checkout-section">
+                        <button class="btn btn-primary btn-large" id="checkoutBtn" disabled>
+                            <i class="fas fa-credit-card"></i>
+                            Proceder al Pago
+                        </button>
+                        <p class="secure-checkout">
+                            <i class="fas fa-lock"></i>
+                            Pago seguro con MercadoPago
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Despedida Eterna. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Procesando...</p>
+        </div>
+    </div>
+
+    <script src="assets/js/carrito.js"></script>
+</body>
+</html> 

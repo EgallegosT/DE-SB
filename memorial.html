@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil Memorial - Despedida Eterna</title>
+    <meta name="description" content="Honra la memoria de un ser querido">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Lightbox CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/memorial-view.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="memorial-header" id="memorialHeader">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <button class="btn btn-share" id="shareBtn">
+                        <i class="fas fa-share"></i>
+                        Compartir
+                    </button>
+                    <a href="/dashboard.html" class="btn btn-dashboard">Dashboard</a>
+                    <button class="btn btn-logout" id="logoutBtn">
+                        <i class="fas fa-right-from-bracket"></i>
+                        Cerrar Sesión
+                    </button>
+                    <!-- Iconos solo para móvil -->
+                    <div class="header-icons-mobile">
+                        <a href="/dashboard.html" title="Dashboard"><i class="fa-solid fa-gauge"></i></a>
+                        <a href="#" title="Cerrar Sesión" id="logoutIcon"><i class="fa-solid fa-right-from-bracket"></i></a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" id="heroSection">
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-overlay"></div>
+        
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="" alt="" id="heroImage" class="memorial-portrait">
+                </div>
+                
+                <div class="hero-text">
+                    <h1 class="memorial-name" id="memorialName">Nombre del Ser Querido</h1>
+                    <div class="memorial-dates" id="memorialDates">
+                        <span class="birth-date">1920</span>
+                        <span class="separator">-</span>
+                        <span class="death-date">2023</span>
+                    </div>
+                    <p class="memorial-epitaph" id="memorialEpitaph">Epitafio del ser querido</p>
+                    
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <i class="fas fa-eye"></i>
+                            <span id="viewCount">0</span>
+                            <small>visitas</small>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-heart"></i>
+                            <span id="candleCount">0</span>
+                            <small>velas</small>
+                        </div>
+                        <div class="stat">
+                            <i class="fas fa-comment"></i>
+                            <span id="messageCount">0</span>
+                            <small>mensajes</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Floating QR Code -->
+        <div class="qr-code-float" id="qrCodeFloat">
+            <div class="qr-code-container">
+                <div id="qrCode"></div>
+                <small>Escanea para compartir</small>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Navigation Tabs -->
+            <nav class="content-nav" id="contentNav">
+                <button class="nav-tab active" data-tab="biography">
+                    <i class="fas fa-book-open"></i>
+                    Biografía
+                </button>
+                <button class="nav-tab" data-tab="gallery">
+                    <i class="fas fa-images"></i>
+                    Galería
+                </button>
+                <button class="nav-tab" data-tab="timeline">
+                    <i class="fas fa-clock"></i>
+                    Timeline
+                </button>
+                <button class="nav-tab" data-tab="messages">
+                    <i class="fas fa-comment"></i>
+                    Mensajes
+                </button>
+                <button class="nav-tab" data-tab="candles">
+                    <i class="fas fa-fire"></i>
+                    Velas
+                </button>
+            </nav>
+
+            <!-- Biography Tab -->
+            <section class="content-tab active" id="biographyTab">
+                <div class="biography-content">
+                    <div class="biography-text" id="biographyText">
+                        <!-- Biography content will be loaded here -->
+                    </div>
+                    
+                    <div class="biography-details">
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Lugar de Nacimiento</h4>
+                                <p id="birthPlace">No especificado</p>
+                            </div>
+                        </div>
+                        
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Lugar de Fallecimiento</h4>
+                                <p id="deathPlace">No especificado</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Gallery Tab -->
+            <section class="content-tab" id="galleryTab">
+                <div class="gallery-content">
+                    <div class="gallery-grid" id="galleryGrid">
+                        <!-- Gallery images will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Timeline Tab -->
+            <section class="content-tab" id="timelineTab">
+                <div class="timeline-content">
+                    <div class="timeline-container" id="timelineContainer">
+                        <!-- Timeline items will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Messages Tab -->
+            <section class="content-tab" id="messagesTab">
+                <div class="messages-content">
+                    <div class="messages-header">
+                        <h3>Mensajes de Condolencias</h3>
+                        <button class="btn btn-primary" id="addMessageBtn">
+                            <i class="fas fa-plus"></i>
+                            Dejar Mensaje
+                        </button>
+                    </div>
+                    
+                    <div class="messages-list" id="messagesList">
+                        <!-- Messages will be loaded here -->
+                    </div>
+                </div>
+            </section>
+
+            <!-- Candles Tab -->
+            <section class="content-tab" id="candlesTab">
+                <div class="candles-content">
+                    <div class="candles-header">
+                        <h3>Velas Virtuales</h3>
+                        <p>Enciende una vela virtual en memoria de tu ser querido</p>
+                    </div>
+                    
+                    <div class="candles-grid" id="candlesGrid">
+                        <!-- Virtual candles will be displayed here -->
+                    </div>
+                    
+                    <div class="light-candle-section">
+                        <button class="btn btn-primary btn-large" id="lightNewCandleBtn">
+                            <i class="fas fa-fire"></i>
+                            Encender Nueva Vela
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Message Modal -->
+    <div class="modal" id="messageModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Dejar Mensaje de Condolencias</h3>
+                <button class="modal-close" id="closeMessageModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Auth Check Section -->
+                <div id="messageAuthCheck" class="auth-check-section">
+                    <div class="auth-check-content">
+                        <i class="fas fa-user-lock"></i>
+                        <h4>Registro Requerido</h4>
+                        <p>Para dejar un mensaje de condolencias, necesitas estar registrado en Despedida Eterna.</p>
+                        <div class="auth-actions">
+                            <button type="button" class="btn btn-primary" id="loginForMessage">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Iniciar Sesión
+                            </button>
+                            <button type="button" class="btn btn-outline" id="registerForMessage">
+                                <i class="fas fa-user-plus"></i>
+                                Registrarse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Message Form (hidden by default) -->
+                <form id="messageForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="visitorName">Tu Nombre *</label>
+                        <input type="text" id="visitorName" name="visitorName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="messageText">Mensaje *</label>
+                        <textarea id="messageText" name="messageText" class="form-control" rows="4" 
+                                placeholder="Comparte tus recuerdos, condolencias o un mensaje especial..." required></textarea>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="isAnonymous" name="isAnonymous">
+                            <span class="checkmark"></span>
+                            Enviar como anónimo
+                        </label>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelMessageBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Candle Modal -->
+    <div class="modal" id="candleModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Encender Vela Virtual</h3>
+                <button class="modal-close" id="closeCandleModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Auth Check Section -->
+                <div id="candleAuthCheck" class="auth-check-section">
+                    <div class="auth-check-content">
+                        <i class="fas fa-fire"></i>
+                        <h4>Registro Requerido</h4>
+                        <p>Para encender una vela virtual, necesitas estar registrado en Despedida Eterna.</p>
+                        <div class="auth-actions">
+                            <button type="button" class="btn btn-primary" id="loginForCandle">
+                                <i class="fas fa-sign-in-alt"></i>
+                                Iniciar Sesión
+                            </button>
+                            <button type="button" class="btn btn-outline" id="registerForCandle">
+                                <i class="fas fa-user-plus"></i>
+                                Registrarse
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Candle Form (hidden by default) -->
+                <form id="candleForm" style="display: none;">
+                    <div class="form-group">
+                        <label for="candleName">Tu Nombre *</label>
+                        <input type="text" id="candleName" name="candleName" class="form-control" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="candleMessage">Mensaje (Opcional)</label>
+                        <textarea id="candleMessage" name="candleMessage" class="form-control" rows="3" 
+                                placeholder="Un mensaje especial para acompañar tu vela..."></textarea>
+                    </div>
+                    
+                    <div class="candle-preview">
+                        <div class="candle-animation">
+                            <div class="candle">
+                                <div class="flame"></div>
+                                <div class="wick"></div>
+                                <div class="wax"></div>
+                            </div>
+                        </div>
+                        <p>Tu vela brillará en memoria de <span id="memorialNameCandle"></span></p>
+                    </div>
+                    
+                    <div class="form-actions">
+                        <button type="button" class="btn btn-outline" id="cancelCandleBtn">Cancelar</button>
+                        <button type="submit" class="btn btn-primary">Encender Vela</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Share Modal -->
+    <div class="modal" id="shareModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Compartir Perfil Memorial</h3>
+                <button class="modal-close" id="closeShareModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-options">
+                    <div class="share-option">
+                        <button class="share-btn" data-platform="whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </button>
+                    </div>
+                    
+                    <div class="share-option">
+                        <button class="share-btn" data-platform="facebook">
+                            <i class="fab fa-facebook"></i>
+                            Facebook
+                        </button>
+                    </div>
+                    
+                    <div class="share-option">
+                        <button class="share-btn" data-platform="twitter">
+                            <i class="fab fa-twitter"></i>
+                            Twitter
+                        </button>
+                    </div>
+                    
+                    <div class="share-option">
+                        <button class="share-btn" data-platform="email">
+                            <i class="fas fa-envelope"></i>
+                            Email
+                        </button>
+                    </div>
+                    
+                    <div class="share-option">
+                        <button class="share-btn" data-platform="copy">
+                            <i class="fas fa-link"></i>
+                            Copiar Enlace
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="qr-code-section">
+                    <h4>QR Code</h4>
+                    <div id="shareQRCode"></div>
+                    <p>Escanea para acceder directamente al perfil</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Music Player -->
+    <div class="music-player" id="musicPlayer" style="display: none;">
+        <audio id="backgroundMusic" controls>
+            <source src="" type="audio/mpeg">
+            Tu navegador no soporta el elemento de audio.
+        </audio>
+        <button class="music-toggle" id="musicToggle">
+            <i class="fas fa-music"></i>
+        </button>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Cargando perfil memorial...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    
+    <!-- Supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="assets/js/supabase-client.js?v=12"></script>
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/memorial-view.js"></script>
+    <script>
+        // Verificar que las librerías estén cargadas
+        document.addEventListener('DOMContentLoaded', function() {
+            // Verificar QRCode
+            if (typeof QRCode !== 'undefined') {
+                console.log('QRCode library loaded successfully');
+            } else {
+                console.warn('QRCode library not loaded');
+            }
+            
+            // Verificar Lightbox
+            if (typeof lightbox !== 'undefined') {
+                console.log('Lightbox library loaded successfully');
+            } else {
+                console.warn('Lightbox library not loaded');
+            }
+            
+            // Verificar que las pestañas funcionen
+            setTimeout(() => {
+                const navTabs = document.querySelectorAll('.nav-tab');
+                const contentTabs = document.querySelectorAll('.content-tab');
+                
+                console.log('Navigation tabs found:', navTabs.length);
+                console.log('Content tabs found:', contentTabs.length);
+                
+                if (navTabs.length > 0 && contentTabs.length > 0) {
+                    console.log('Tabs structure is correct');
+                } else {
+                    console.error('Tabs structure is incorrect');
+                }
+            }, 500);
+        });
+    </script>
+</body>
+</html> 

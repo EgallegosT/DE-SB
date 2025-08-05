@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evento Memorial - Despedida Eterna</title>
+    <meta name="description" content="Detalles del evento memorial en Despedida Eterna">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="stylesheet" href="assets/css/event-view.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="memorial-header" id="eventHeader">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                <div class="navbar-actions">
+                    <a href="/dashboard.html" class="btn btn-dashboard">Dashboard</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section event-hero" id="heroSection">
+        <div class="hero-background" id="heroBackground"></div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-image">
+                    <img src="assets/images/default-avatar.png" alt="Imagen del evento" id="eventImage" class="event-portrait">
+                </div>
+                <div class="hero-text">
+                    <h1 class="event-title" id="eventTitle">Título del Evento</h1>
+                    <div class="event-meta">
+                        <span id="eventDate"><i class="fas fa-calendar"></i> Fecha</span>
+                        <span id="eventLocation"><i class="fas fa-map-marker-alt"></i> Lugar</span>
+                        <span id="eventType"><i class="fas fa-globe"></i> Tipo</span>
+                    </div>
+                    <p class="event-description" id="eventDescription">Descripción del evento</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Navigation Tabs -->
+            <nav class="content-nav" id="contentNav">
+                <button class="nav-tab active" data-tab="info">
+                    <i class="fas fa-info-circle"></i>
+                    Información
+                </button>
+                <button class="nav-tab" data-tab="itinerary">
+                    <i class="fas fa-list"></i>
+                    Itinerario
+                </button>
+                <button class="nav-tab" data-tab="map">
+                    <i class="fas fa-map"></i>
+                    Mapa
+                </button>
+                <button class="nav-tab" data-tab="messages">
+                    <i class="fas fa-comment"></i>
+                    Mensajes
+                </button>
+            </nav>
+
+            <!-- Información Tab -->
+            <section class="content-tab active" id="infoTab">
+                <div class="info-content">
+                    <h3>Detalles del Evento</h3>
+                    <div class="info-details">
+                        <div class="detail-item">
+                            <i class="fas fa-user"></i>
+                            <div>
+                                <h4>Organizador</h4>
+                                <p id="eventOrganizer">No especificado</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Dirección</h4>
+                                <p id="eventAddress">No especificada</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <h4>Máximo de invitados</h4>
+                                <p id="eventMaxGuests">Sin límite</p>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <i class="fas fa-link"></i>
+                            <div>
+                                <h4>Enlace Virtual</h4>
+                                <p id="eventVirtualLink">No disponible</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Itinerario Tab -->
+            <section class="content-tab" id="itineraryTab">
+                <div class="itinerary-content">
+                    <h3>Itinerario</h3>
+                    <div id="eventItinerary">No especificado</div>
+                </div>
+            </section>
+
+            <!-- Mapa Tab -->
+            <section class="content-tab" id="mapTab">
+                <div class="map-content">
+                    <h3>Ubicación</h3>
+                    <div id="eventMap"></div>
+                </div>
+            </section>
+
+            <!-- Mensajes Tab (opcional, puedes ocultar si no usas) -->
+            <section class="content-tab" id="messagesTab">
+                <div class="messages-content">
+                    <h3>Mensajes</h3>
+                    <div id="eventMessages">Próximamente podrás dejar mensajes para este evento.</div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="assets/js/event.js"></script>
+    <script>
+    // Tabs navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const tabs = document.querySelectorAll('.nav-tab');
+        const tabSections = document.querySelectorAll('.content-tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', function() {
+                tabs.forEach(t => t.classList.remove('active'));
+                tabSections.forEach(s => s.classList.remove('active'));
+                this.classList.add('active');
+                const tabId = this.getAttribute('data-tab');
+                document.getElementById(tabId + 'Tab').classList.add('active');
+            });
+        });
+    });
+    </script>
+</body>
+</html>

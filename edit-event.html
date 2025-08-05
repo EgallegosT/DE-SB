@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Evento | Despedida Eterna</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/edit-event.css">
+</head>
+<body>
+    <main class="edit-event-main">
+        <div class="edit-event-container">
+            <h1>Editar Evento</h1>
+            <form id="editEventForm">
+                <div class="form-group">
+                    <label for="title">Título</label>
+                    <input type="text" id="title" name="title" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="description">Descripción</label>
+                    <textarea id="description" name="description" class="form-control"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="eventDate">Fecha y Hora</label>
+                        <input type="datetime-local" id="eventDate" name="eventDate" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Lugar</label>
+                        <input type="text" id="location" name="location" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="address">Dirección</label>
+                    <input type="text" id="address" name="address" class="form-control">
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="latitude">Latitud</label>
+                        <input type="number" step="any" id="latitude" name="latitude" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="longitude">Longitud</label>
+                        <input type="number" step="any" id="longitude" name="longitude" class="form-control">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="itinerary">Itinerario</label>
+                    <textarea id="itinerary" name="itinerary" class="form-control"></textarea>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="isPublic">¿Evento Público?</label>
+                        <select id="isPublic" name="isPublic" class="form-control">
+                            <option value="1">Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="isVirtual">¿Evento Virtual?</label>
+                        <select id="isVirtual" name="isVirtual" class="form-control">
+                            <option value="0">No</option>
+                            <option value="1">Sí</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="virtualLinkGroup" style="display:none;">
+                    <label for="virtualLink">Enlace Virtual</label>
+                    <input type="url" id="virtualLink" name="virtualLink" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="maxGuests">Máximo de Invitados</label>
+                    <input type="number" id="maxGuests" name="maxGuests" class="form-control" min="1" max="1000">
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                    <button type="button" class="btn btn-outline" id="cancelEditBtn">Cancelar</button>
+                </div>
+            </form>
+            <div class="loading-state" id="editEventLoading" style="display:none;">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Guardando cambios...</p>
+            </div>
+            <div class="error-state" id="editEventError" style="display:none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <p id="editEventErrorMsg"></p>
+            </div>
+            <div class="success-state" id="editEventSuccess" style="display:none;">
+                <i class="fas fa-check-circle"></i>
+                <p>¡Evento actualizado exitosamente!</p>
+            </div>
+        </div>
+    </main>
+    <script src="assets/js/edit-event.js"></script>
+</body>
+</html>

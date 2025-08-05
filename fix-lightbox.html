@@ -1,0 +1,14 @@
+<!-- Agregar esto al final del archivo memorial.html, justo antes de </body> -->
+
+<script>
+    // Inicializar Lightbox de manera segura
+    document.addEventListener('DOMContentLoaded', function() {
+        if (typeof lightbox !== 'undefined') {
+            lightbox.option({
+                'resizeDuration': 200,
+                'wrapAround': true,
+                'albumLabel': 'Imagen %1 de %2'
+            });
+        }
+    });
+</script> 

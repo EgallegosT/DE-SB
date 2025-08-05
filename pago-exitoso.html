@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pago Exitoso - Despedida Eterna</title>
+    <meta name="description" content="Tu pago ha sido procesado exitosamente">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="success-container">
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    
+                    <h1 class="success-title">¡Pago Exitoso!</h1>
+                    
+                    <div class="success-message">
+                        <p>Tu pago ha sido procesado correctamente.</p>
+                        <p>Tu memorial ha sido activado y está listo para ser visitado.</p>
+                    </div>
+
+                    <div class="memorial-info" id="memorialInfo" style="display: none;">
+                        <h3>Información del Memorial</h3>
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="label">Nombre:</span>
+                                <span class="value" id="memorialName">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Plan:</span>
+                                <span class="value" id="memorialPlan">-</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="label">Placa QR:</span>
+                                <span class="value" id="memorialQr">-</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="action-buttons">
+                        <a href="/dashboard.html" class="btn btn-outline">
+                            <i class="fas fa-arrow-left"></i>
+                            Volver al Dashboard
+                        </a>
+                        <a href="#" class="btn btn-primary" id="viewMemorialBtn">
+                            <i class="fas fa-eye"></i>
+                            Ver Memorial
+                        </a>
+                    </div>
+
+                    <div class="success-footer">
+                        <p>Recibirás un email de confirmación con los detalles de tu compra.</p>
+                        <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/pago-exitoso.js"></script>
+</body>
+</html> 

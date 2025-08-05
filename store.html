@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda Memorial - Despedida Eterna</title>
+    <meta name="description" content="Productos especiales para honrar la memoria de tus seres queridos">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- MercadoPago SDK -->
+    <script src="https://sdk.mercadopago.com/js/v2"></script>
+    
+    <!-- Estilos CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/store.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <i class="fas fa-heart"></i>
+                        <span>Despedida Eterna</span>
+                    </a>
+                </div>
+                
+                <div class="navbar-menu" id="navbarMenu">
+                    <a href="/" class="nav-link">Inicio</a>
+                    <a href="/dashboard.html" class="nav-link">Dashboard</a>
+                    <a href="#contacto" class="nav-link">Contacto</a>
+                </div>
+                
+                <div class="navbar-actions">
+                    <a href="/carrito.html" class="btn btn-outline" id="cartBtn">
+                        <i class="fas fa-shopping-cart"></i>
+                        <span class="cart-count" id="cartCount">0</span>
+                    </a>
+                    <a href="/login.html" class="btn btn-primary">Iniciar Sesión</a>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Tienda Memorial</h1>
+                <p class="hero-description">
+                    Productos especiales para honrar la memoria de tus seres queridos
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Filters and Search -->
+            <div class="store-controls">
+                <div class="search-section">
+                    <div class="search-box">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchInput" placeholder="Buscar productos..." class="search-input">
+                    </div>
+                </div>
+                
+                <div class="filters-section">
+                    <select class="form-select" id="categoryFilter">
+                        <option value="">Todas las categorías</option>
+                        <option value="placas">Placas con QR</option>
+                        <option value="flores">Arreglos Florales</option>
+                        <option value="velas">Velas Personalizadas</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                    
+                    <select class="form-select" id="sortFilter">
+                        <option value="name">Ordenar por nombre</option>
+                        <option value="price_low">Precio: menor a mayor</option>
+                        <option value="price_high">Precio: mayor a menor</option>
+                        <option value="popular">Más populares</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div class="products-section">
+                <div class="products-header">
+                    <h2>Productos Disponibles</h2>
+                    <p id="productsCount">Mostrando 0 productos</p>
+                </div>
+                
+                <div class="products-grid" id="productsGrid">
+                    <!-- Products will be loaded here -->
+                </div>
+                
+                <div class="products-loading" id="productsLoading">
+                    <i class="fas fa-spinner fa-spin"></i>
+                    <p>Cargando productos...</p>
+                </div>
+                
+                <div class="products-empty" id="productsEmpty" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta ajustar los filtros de búsqueda</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Shopping Cart Sidebar -->
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-header">
+            <h3>Carrito de Compras</h3>
+            <button class="cart-close" id="closeCartBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be loaded here -->
+        </div>
+        
+        <div class="cart-empty" id="cartEmpty">
+            <i class="fas fa-shopping-cart"></i>
+            <p>Tu carrito está vacío</p>
+            <small>Agrega productos para comenzar</small>
+        </div>
+        
+        <div class="cart-summary" id="cartSummary" style="display: none;">
+            <div class="cart-totals">
+                <div class="total-item">
+                    <span>Subtotal:</span>
+                    <span id="cartSubtotal">$0.00</span>
+                </div>
+                <div class="total-item">
+                    <span>Envío:</span>
+                    <span id="cartShipping">$0.00</span>
+                </div>
+                <div class="total-item total">
+                    <span>Total:</span>
+                    <span id="cartTotal">$0.00</span>
+                </div>
+            </div>
+            
+            <button class="btn btn-primary btn-full" id="checkoutBtn">
+                <i class="fas fa-credit-card"></i>
+                Proceder al Pago
+            </button>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3 id="modalProductName">Nombre del Producto</h3>
+                <button class="modal-close" id="closeProductModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="product-detail" id="productDetail">
+                    <!-- Product detail content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content modal-large">
+            <div class="modal-header">
+                <h3>Finalizar Compra</h3>
+                <button class="modal-close" id="closeCheckoutModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="checkout-content">
+                    <div class="checkout-form">
+                        <h4>Información de Envío</h4>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="shippingName">Nombre Completo *</label>
+                                <input type="text" id="shippingName" name="shippingName" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shippingEmail">Email *</label>
+                                <input type="email" id="shippingEmail" name="shippingEmail" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="shippingAddress">Dirección *</label>
+                            <textarea id="shippingAddress" name="shippingAddress" class="form-control" rows="3" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="shippingCity">Ciudad *</label>
+                                <input type="text" id="shippingCity" name="shippingCity" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shippingState">Provincia *</label>
+                                <input type="text" id="shippingState" name="shippingState" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="shippingZip">Código Postal *</label>
+                                <input type="text" id="shippingZip" name="shippingZip" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="shippingPhone">Teléfono *</label>
+                                <input type="tel" id="shippingPhone" name="shippingPhone" class="form-control" required>
+                            </div>
+                        </div>
+                        
+                        <h4>Método de Pago</h4>
+                        <div id="paymentMethods">
+                            <!-- MercadoPago payment methods will be loaded here -->
+                        </div>
+                        
+                        <div class="checkout-actions">
+                            <button type="button" class="btn btn-outline" id="cancelCheckoutBtn">Cancelar</button>
+                            <button type="button" class="btn btn-primary" id="processPaymentBtn">
+                                <i class="fas fa-lock"></i>
+                                Pagar Ahora
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="checkout-summary">
+                        <h4>Resumen de Compra</h4>
+                        <div class="summary-items" id="summaryItems">
+                            <!-- Order summary will be loaded here -->
+                        </div>
+                        <div class="summary-totals">
+                            <div class="total-item">
+                                <span>Subtotal:</span>
+                                <span id="summarySubtotal">$0.00</span>
+                            </div>
+                            <div class="total-item">
+                                <span>Envío:</span>
+                                <span id="summaryShipping">$0.00</span>
+                            </div>
+                            <div class="total-item total">
+                                <span>Total:</span>
+                                <span id="summaryTotal">$0.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Procesando pago...</p>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/store.js"></script>
+</body>
+</html> 

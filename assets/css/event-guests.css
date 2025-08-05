@@ -1,0 +1,159 @@
+/* Estilos para la pantalla de alta de invitados */
+body {
+  font-family: 'Inter', Arial, sans-serif;
+  background: #f7fafc;
+  color: #222;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  text-align: center;
+  margin-top: 32px;
+  color: #2d8f2d;
+  font-size: 2.2rem;
+}
+
+form#guestForm {
+  background: #fff;
+  max-width: 420px;
+  margin: 32px auto 24px auto;
+  padding: 32px 28px 24px 28px;
+  border-radius: 16px;
+  box-shadow: 0 2px 16px rgba(45,143,45,0.07);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+form#guestForm label {
+  font-weight: 500;
+  color: #2d8f2d;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+form#guestForm input[type="text"],
+form#guestForm input[type="email"],
+form#guestForm input[type="number"] {
+  padding: 8px 12px;
+  border: 1.5px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+
+form#guestForm input:focus {
+  border-color: #2d8f2d;
+  outline: none;
+}
+
+form#guestForm button[type="submit"] {
+  background: #2d8f2d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.2s;
+}
+
+form#guestForm button[type="submit"]:hover {
+  background: #256d25;
+}
+
+h2 {
+  text-align: center;
+  color: #2d8f2d;
+  margin-top: 24px;
+  font-size: 1.4rem;
+}
+
+#guestList {
+  max-width: 420px;
+  margin: 0 auto 32px auto;
+  padding: 0;
+  list-style: none;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(45,143,45,0.07);
+  overflow: hidden;
+}
+
+#guestList .guest-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 1.05rem;
+  color: #333;
+  gap: 10px;
+  background: #f9fef9;
+}
+
+#guestList .guest-item:last-child {
+  border-bottom: none;
+}
+
+.guest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.guest-name {
+  font-weight: 600;
+  color: #2d8f2d;
+}
+
+.guest-phone {
+  color: #555;
+  font-size: 0.98em;
+}
+
+.guest-status {
+  color: #888;
+  font-size: 0.95em;
+}
+
+.share-btn {
+  background: #25d366;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px rgba(45,143,45,0.07);
+}
+
+.share-btn:hover {
+  background: #1ebe57;
+}
+
+.share-btn img {
+  width: 20px;
+  height: 20px;
+  margin-right: 4px;
+  vertical-align: middle;
+}
+
+@media (max-width: 600px) {
+  form#guestForm, #guestList {
+    max-width: 98vw;
+    padding: 18px 6vw;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+}

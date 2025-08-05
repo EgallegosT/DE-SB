@@ -1,0 +1,134 @@
+/* --- Estilos para editar evento --- */
+.edit-event-main {
+    min-height: 100vh;
+    background: #f8fafc;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 40px 0;
+}
+
+.edit-event-container {
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px rgba(60,60,60,0.08);
+    padding: 36px 38px 28px 38px;
+    max-width: 700px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.edit-event-container h1 {
+    font-size: 2.1rem;
+    font-weight: 700;
+    color: #2d3748;
+    margin-bottom: 28px;
+    letter-spacing: -1px;
+}
+
+.form-group {
+    margin-bottom: 18px;
+}
+
+.form-row {
+    display: flex;
+    gap: 18px;
+    margin-bottom: 18px;
+}
+
+.form-row .form-group {
+    flex: 1;
+    margin-bottom: 0;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 1rem;
+    background: #f9fafb;
+    color: #222;
+    transition: border-color 0.2s;
+}
+
+.form-control:focus {
+    border-color: #2d8f2d;
+    outline: none;
+    background: #fff;
+}
+
+label {
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 6px;
+    display: block;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    gap: 18px;
+    justify-content: flex-end;
+    margin-top: 24px;
+}
+
+.btn {
+    padding: 12px 28px;
+    border-radius: 10px;
+    font-size: 1.08rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    transition: background 0.18s, color 0.18s, box-shadow 0.18s;
+}
+
+.btn-primary {
+    background: #2d8f2d;
+    color: #fff;
+    border: none;
+    box-shadow: 0 2px 8px rgba(45,143,45,0.08);
+}
+
+.btn-primary:hover, .btn-primary:focus {
+    background: #256d1a;
+}
+
+.btn-outline {
+    background: #fff;
+    color: #2d8f2d;
+    border: 2px solid #2d8f2d;
+}
+
+.btn-outline:hover, .btn-outline:focus {
+    background: #eaffea;
+}
+
+.loading-state, .error-state, .success-state {
+    margin-top: 24px;
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+.loading-state i, .error-state i, .success-state i {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+    color: #2d8f2d;
+}
+
+.error-state i {
+    color: #e53e3e;
+}
+.success-state i {
+    color: #2d8f2d;
+}
+
+@media (max-width: 700px) {
+    .edit-event-container {
+        padding: 18px 6vw 18px 6vw;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+}
